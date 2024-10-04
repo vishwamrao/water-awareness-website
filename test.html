@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OASIS - Water Conservation</title>
+    <link rel="stylesheet" href="homepagestyle.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>OASIS</h1>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research Papers</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#forum">Community Forum</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <button class="menu-icon">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search">
+            <button class="search-button">🔍</button>
+            <button id="voice-search-button">🎤</button>
+        </div>
+        <h2>Act Today for a Better Tomorrow: Conserve Water...</h2>
+        <a href="#learn-more" class="cta-button">Learn More</a>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <h2>Search</h2>
+        <p>Find the information you need with our powerful search feature.</p>
+        <div class="grid-container">
+            <div class="grid-item"><a href="#">Water Saving Tips</a></div>
+            <div class="grid-item"><a href="#">Water Conservation Programs</a></div>
+            <div class="grid-item"><a href="1.html" target="_blank">Water Conservation Tools</a></div>
+
+            <div class="grid-item"><a href="#">Water Conservation News</a></div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-section">
+        <h2>Articles</h2>
+        <p>Discover valuable information and tips about water conservation.</p>
+        <div class="grid-container" id="articles-container">
+            <!-- Articles will be injected here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <h2>About Us</h2>
+        <p>Learn more about our organization and our commitment to water conservation.</p>
+        <div class="grid-container">
+            <div class="grid-item"><a href="#">Our Mission</a></div>
+            <div class="grid-item"><a href="#">Our Values</a></div>
+            <div class="grid-item"><a href="#">Our Achievements</a></div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Voice Search -->
+    <script>
+        const voiceSearchButton = document.getElementById('voice-search-button');
+        const searchInput = document.getElementById('search-input');
+
+        // Check if browser supports the Web Speech API
+        if ('webkitSpeechRecognition' in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            voiceSearchButton.addEventListener('click', () => {
+                recognition.start();
+            });
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                searchInput.value = transcript;
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Speech recognition error:', event);
+            };
+
+            recognition.onend = () => {
+                console.log('Speech recognition ended.');
+            };
+        } else {
+            console.warn('Web Speech API is not supported in this browser.');
+            voiceSearchButton.disabled = true; // Disable the button if speech API isn't supported
+        }
+    </script>
+</body>
+
+</html>

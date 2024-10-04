@@ -1,0 +1,112 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark theme background */
+    color: #E0E0E0; /* Light gray text */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #1A1A1A;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #00BFFF; /* Oasis logo color */
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.menu-bar {
+    width: 30px;
+    height: 3px;
+    background-color: #E0E0E0;
+    margin: 4px 0;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 0;
+    background: linear-gradient(135deg, #000428, #004e92); /* Dark gradient background */
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Articles Section */
+.articles {
+    padding: 50px 0;
+    background-color: #1A1A1A;
+}
+
+.articles h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #00BFFF;
+}
+
+.articles article {
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.articles article h3 {
+    margin: 0 0 10px 0;
+}
+
+/* Banner Section */
+.banner {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #004e92; /* Bold color for the banner */
+    color: #FFF;
+}
+
+.banner h2 {
+    margin: 0;
+    font-size: 36px;
+}
+
+/* About Us Section */
+.about-us {
+    padding: 50px 0;
+    background-color: #1A1A1A;
+}
+
+.about-us h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00BFFF;
+}
+
+.about-us p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}

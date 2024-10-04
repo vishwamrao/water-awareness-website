@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OASIS - Water Conservation</title>
+    <link rel="stylesheet" href="homepagestyle.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>OASIS</h1>
+        </div>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research Papers</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#forum">Community Forum</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <button class="menu-icon">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button class="search-button">🔍</button>
+        </div>
+        <h2>Act Today for a Better Tomorrow: Conserve Water...</h2>
+        <a href="#learn-more" class="cta-button">Learn More</a>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <h2>Search</h2>
+        <p>Find the information you need with our powerful search feature.</p>
+        <div class="grid-container">
+            <div class="grid-item"><a href="map.html">Water Conservation Map</a></div>
+            <div class="grid-item"><a href="#">Water Conservation Programs</a></div>
+            <div class="grid-item"><a href="1.html" target="_blank">Water Conservation Tools</a></div>
+
+            <div class="grid-item"><a href="#">Water Conservation News</a></div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-section">
+        <h2>Articles</h2>
+        <p>Discover valuable information and tips about water conservation.</p>
+        <div class="grid-container" id="articles-container">
+            <!-- Articles will be injected here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <h2>About Us</h2>
+        <p>Learn more about our organization and our commitment to water conservation.</p>
+        <div class="grid-container">
+            <div class="grid-item"><a href="#">Our Mission</a></div>
+            <div class="grid-item"><a href="#">Our Values</a></div>
+            <div class="grid-item"><a href="#">Our Achievements</a></div>
+        </div>
+    </section>
+
+    <!-- JavaScript at the end of body for better performance -->
+    <script>
+        const apiKey = 'b5070b6c95d84a1bbf61ed24506b2463';
+        const apiUrl = `https://newsapi.org/v2/everything?q=water%20conservation&apiKey=${apiKey}`;
+
+        const articlesContainer = document.getElementById('articles-container');
+
+        async function fetchArticles() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                if (data.articles && data.articles.length > 0) {
+                    renderArticles(data.articles);
+                } else {
+                    articlesContainer.innerHTML = '<p>No articles found on water conservation.</p>';
+                }
+            } catch (error) {
+                console.error('Error fetching articles:', error);
+                articlesContainer.innerHTML = '<p>Failed to load articles. Please try again later.</p>';
+            }
+        }
+
+        function renderArticles(articles) {
+            articlesContainer.innerHTML = ''; // Clear the container before rendering
+
+            articles.forEach(article => {
+                const articleItem = document.createElement('div');
+                articleItem.classList.add('grid-item');
+
+                articleItem.innerHTML = `
+                    <a href="${article.url}" target="_blank">
+                        <h3>${article.title}</h3>
+                        <p>${article.description || 'No description available.'}</p>
+                        <img src="${article.urlToImage || 'default-image.jpg'}" alt="${article.title}" style="width:100%; height:auto;">
+                    </a>
+                `;
+
+                articlesContainer.appendChild(articleItem);
+            });
+        }
+
+        // Fetch articles on page load
+        fetchArticles();
+    </script>
+
+</body>
+</html>
